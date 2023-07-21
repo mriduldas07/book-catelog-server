@@ -1,4 +1,4 @@
-import { IBooks } from "./books.interface";
+import { IBooks, IComment } from "./books.interface";
 import { Books } from "./books.model";
 
 const getAllBooks = async (): Promise<IBooks[]> => {
@@ -13,6 +13,20 @@ const getSingleBook = async (id: string): Promise<IBooks | null> => {
 
 const createBook = async (payload: IBooks): Promise<IBooks> => {
   const result = await Books.create(payload);
+  return result;
+};
+
+const addComment = async (
+  id: string,
+  comment: IComment
+): Promise<IBooks | null> => {
+  const result = await Books.findByIdAndUpdate(
+    { _id: id },
+    { $push: { comments: comment } },
+    {
+      new: true,
+    }
+  );
   return result;
 };
 
@@ -37,4 +51,5 @@ export const BooksServices = {
   createBook,
   updateBook,
   deleteBook,
+  addComment,
 };

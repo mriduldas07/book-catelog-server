@@ -41,10 +41,21 @@ const deleteBook: RequestHandler = async (req, res) => {
   });
 };
 
+const addComment: RequestHandler = async (req, res) => {
+  const id = req.params.id;
+  const comment = req.body.comment;
+  // console.log(comment);
+  const result = await BooksServices.addComment(id, comment);
+  res.status(201).json({
+    data: result,
+  });
+};
+
 export const BooksController = {
   getAllBooks,
   getSingleBook,
   createBook,
   updateBook,
   deleteBook,
+  addComment,
 };

@@ -11,6 +11,15 @@ const booksSchema = new Schema(
       type: String,
       required: true,
     },
+    img: {
+      type: String,
+      required: true,
+    },
+    comments: [
+      {
+        type: String,
+      },
+    ],
     genre: {
       type: String,
       required: true,
