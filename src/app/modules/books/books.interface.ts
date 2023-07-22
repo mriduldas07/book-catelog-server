@@ -10,7 +10,7 @@ export type IBooks = {
 };
 
 export type IComment = {
-  comment: string;
+  comment: string | null;
 };
 
 export type IBooksModel = Model<IBooks, Record<string, unknown>>;

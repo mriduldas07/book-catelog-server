@@ -51,6 +51,14 @@ const addComment: RequestHandler = async (req, res) => {
   });
 };
 
+const getComment: RequestHandler = async (req, res) => {
+  const id = req.params.id;
+  const result = await BooksServices.getComment(id);
+  res.status(200).json({
+    data: result,
+  });
+};
+
 export const BooksController = {
   getAllBooks,
   getSingleBook,
@@ -58,4 +66,5 @@ export const BooksController = {
   updateBook,
   deleteBook,
   addComment,
+  getComment,
 };

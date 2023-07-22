@@ -30,6 +30,11 @@ const addComment = async (
   return result;
 };
 
+const getComment = async (id: string): Promise<IBooks | null> => {
+  const result = await Books.findById(id, { comments: 1, _id: 0 });
+  return result;
+};
+
 const updateBook = async (
   id: string,
   payload: Partial<IBooks>
@@ -52,4 +57,5 @@ export const BooksServices = {
   updateBook,
   deleteBook,
   addComment,
+  getComment,
 };
